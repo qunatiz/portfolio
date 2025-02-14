@@ -1,0 +1,213 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.heading {
+    position: fixed;
+    left: 10%;
+    bottom: 85%;
+    font-size: 9vh;
+    font-weight: bold;
+    text-transform: uppercase;
+    background: linear-gradient(90deg, #ff6ec4, #7873f5, #ff6ec4);
+    background-size: 200%;
+    -webkit-background-clip: text;
+    color: transparent;
+    transform: translateX(-200%);
+    animation: shimmer 2s infinite linear, slide-in-left 2s forwards ease-in-out 1.2s;
+    display: inline-flex;
+    z-index: 10;
+}
+
+.btn1, .btn2 {
+    padding: 3vh 10vh;
+    font-size: 4vh;
+    left: 15%;
+    border: none;
+    outline: none;
+    color: white;
+    cursor: pointer;
+    position: absolute;
+    z-index: 5;
+    border-radius: 12px;
+    transform: translateX(-200%);
+    animation: slide-in-left 2s forwards ease-in-out;
+}
+
+.btn1 {
+    bottom: 60%;
+    padding: 3vh 15vh;
+    animation-delay: 1.5s;
+}
+.btn2 {
+    bottom: 45%;
+    padding: 3vh 10vh;
+    animation-delay: 1.7s;
+}
+
+.btn1::after, .btn2::after {
+    content: "";
+    z-index: -1;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: #333;
+    left: 0;
+    top: 0;
+    border-radius: 10px;
+}
+.btn1::before, .btn2::before {
+    content: "";
+    background: linear-gradient(45deg, #FF0000, #FF7300, #FFFB00, #48FF00, #00FFD5, #002BFF, #FF00C8, #FF0000);
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    background-size: 600%;
+    z-index: -1;
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    filter: blur(8px);
+    animation: glowing 20s linear infinite;
+    transition: opacity .3s ease-in-out;
+    border-radius: 10px;
+    opacity: 0;
+}
+.btn1:hover::before, .btn2:hover::before {
+    opacity: 1;
+}
+.btn1:active:after, .btn2:active:after {
+    background: transparent;
+}
+.btn1:active, .btn2:active {
+    color: black;
+    font-weight: bold;
+}
+
+.title {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    font-size: 7vh;
+    font-weight: bold;
+    text-transform: uppercase;
+    background: linear-gradient(90deg, #ff6ec4, #7873f5, #ff6ec4);
+    background-size: 200%;
+    -webkit-background-clip: text;
+    color: transparent;
+    transform: translateY(200%);
+    animation: shimmer 2s infinite linear, slide-in-down 1.5s forwards ease-in-out 0.5s;
+    display: inline-flex;
+    z-index: 10;
+}
+
+.container {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 50%;
+    height: 100%;
+    transform: translateX(100%);
+    background: linear-gradient(90deg, #ffbe73, #F2EFC7, #ffbe73);
+    background-size: 200% 200%;
+    border-top-left-radius: 100vw;
+    border-bottom-left-radius: 100vw;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    animation: slide-in-right 2s ease-in-out forwards 0.1s, shimmer 10s linear infinite;
+    z-index: 1;
+}
+
+.container img {
+    width: 70%; /* Covers the available width */
+    max-width: 170vh; /* Allows larger scaling */
+    height: auto;
+    object-fit: contain; /* Ensures full visibility */
+}
+
+@keyframes glowing {
+    0% {
+        background-position: 0 0;
+    }
+    50% {
+        background-position: 400% 0;
+    }
+    100% {
+        background-position: 0 0;
+    }
+}
+@keyframes slide-in-right {
+    0% {
+        transform: translateX(100%);
+        scale: 1;
+    }
+    70% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(0);
+        scale: 1.1;
+    }
+}
+@keyframes slide-in-left {
+    0% {
+        transform: translateX(-200%);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+@keyframes slide-in-down {
+    0% {
+        transform: translateY(200%);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+@keyframes shimmer {
+    0% {
+        background-position: -200% 0;
+    }
+    100% {
+        background-position: 200% 0;
+    }
+}
+
+/* Responsive Fix for Smaller Screens */
+@media (max-width: 768px) {
+    .container {
+        width: 100%;
+        height: 50vh;
+        border-top-left-radius: 100vh;
+        border-bottom-left-radius: 100vh;
+    }
+
+    .container img {
+        width: 60%;
+        max-width: 250px;
+    }
+
+    .heading {
+        font-size: 6vh;
+        left: 10%;
+        bottom: 80%;
+    }
+
+    .btn1, .btn2 {
+        font-size: 3vh;
+        padding: 2vh 6vh;
+    }
+    .btn1 {
+        bottom: 35%;
+    }
+    .btn2 {
+        bottom: 25%;
+    }
+    .title {
+        font-size: 5vh;
+        right: 10px;
+        bottom: 10px;
+    }
+}
